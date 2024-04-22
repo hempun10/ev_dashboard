@@ -1,16 +1,15 @@
 import NotFound from '@/pages/not-found';
+import { useUserDetails } from '@/store/useUserDetails';
 import { Suspense, lazy } from 'react';
 import { Navigate, Outlet, useRoutes } from 'react-router-dom';
 
 const DashboardLayout = lazy(
   () => import('@/components/layout/dashboard-layout')
 );
-const SignInPage = lazy(() => import('@/pages/auth/signin'));
 const DashboardPage = lazy(() => import('@/pages/dashboard'));
-const StudentPage = lazy(() => import('@/pages/students'));
-const StudentDetailPage = lazy(
-  () => import('@/pages/students/StudentDetailPage')
-);
+const ChargersPage = lazy(() => import('@/pages/stations'));
+const StationPage = lazy(() => import('@/pages/stations/index'));
+const SettingsPage = lazy(() => import('@/pages/settings'));
 
 // ----------------------------------------------------------------------
 
@@ -31,34 +30,43 @@ export default function AppRouter() {
           index: true
         },
         {
-          path: 'student',
-          element: <StudentPage />
+          path: 'chargers',
+          element: <ChargersPage />
         },
         {
-          path: 'student/details',
-          element: <StudentDetailPage />
+          path: 'stations',
+          element: <StationPage />
+        },
+        {
+          path: 'settings',
+          element: <SettingsPage />
         }
       ]
     }
   ];
 
-  const publicRoutes = [
-    {
-      path: '/login',
-      element: <SignInPage />,
-      index: true
-    },
-    {
-      path: '/404',
-      element: <NotFound />
-    },
-    {
-      path: '*',
-      element: <Navigate to="/404" replace />
-    }
-  ];
+  // const publicRoutes = [
+  //   {
+  //     path: '/login',
+  //     element: <SignInPage />,
+  //     index: true
+  //   },
+  //   {
+  //     path: '/register',
+  //     element: <RegisterPage />,
+  //     index: true
+  //   },
+  //   {
+  //     path: '/404',
+  //     element: <NotFound />
+  //   },
+  //   {
+  //     path: '*',
+  //     element: <Navigate to="/404" replace />
+  //   }
+  // ];
 
-  const routes = useRoutes([...dashboardRoutes, ...publicRoutes]);
+  const routes = useRoutes([...dashboardRoutes]);
 
   return routes;
 }

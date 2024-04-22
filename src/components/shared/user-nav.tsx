@@ -10,8 +10,12 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { useLogout } from '@/hooks/useLogout';
+import { useToggleLogin } from '@/store/useToogleLogin';
 
 export default function UserNav() {
+  const { toggleLogin } = useToggleLogin();
+  const { logout } = useLogout();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

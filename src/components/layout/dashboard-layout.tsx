@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from '../shared/sidebar';
 import Header from '../shared/header';
 import MobileSidebar from '../shared/mobile-sidebar';
 import { MenuIcon } from 'lucide-react';
+import { useUserDetails } from '@/store/useUserDetails';
 
 export default function DashboardLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  const { setUserDetails } = useUserDetails();
+  useEffect(() => {
+    if (localStorage.getItem('ev_userdetails')) {
+      setUserDetails(JSON.parse(localStorage.getItem('ev_userdetails')!));
+    }
+  }, [setUserDetails]);
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   return (

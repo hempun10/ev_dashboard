@@ -1,6 +1,7 @@
 import {
   AlertTriangle,
   ArrowRight,
+  Battery,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -10,6 +11,7 @@ import {
   File,
   FileText,
   HelpCircle,
+  Home,
   Image,
   Laptop,
   LayoutDashboardIcon,
@@ -60,6 +62,9 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  battery: Battery,
+  home: Home,
+  setting: Settings,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

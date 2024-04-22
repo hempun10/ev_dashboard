@@ -1,6 +1,9 @@
+import { useUserDetails } from '@/store/useUserDetails';
 import { NavItem } from '@/types';
 
-export const navItems: NavItem[] = [
+const userDetails = useUserDetails.getState().userDetails;
+
+export const stationManagerRoutes: NavItem[] = [
   {
     title: 'Dashboard',
     href: '/',
@@ -8,18 +11,59 @@ export const navItems: NavItem[] = [
     label: 'Dashboard'
   },
   {
-    title: 'Students',
-    href: '/student',
-    icon: 'user',
-    label: 'Student'
+    title: 'Chargers',
+    href: '/chargers',
+    icon: 'battery',
+    label: 'Chargers'
   },
   {
-    title: 'Login',
-    href: '/login',
-    icon: 'login',
-    label: 'Login'
+    title: 'Settings',
+    href: '/settings',
+    icon: 'settings',
+    label: 'Settings'
   }
 ];
+
+export const adminRoutes: NavItem[] = [
+  {
+    title: 'Dashboard',
+    href: '/',
+    icon: 'dashboard',
+    label: 'Dashboard'
+  },
+  {
+    title: 'Stations',
+    href: '/stations',
+    icon: 'user',
+    label: 'Stations'
+  },
+  {
+    title: 'Settings',
+    href: '/settings',
+    icon: 'settings',
+    label: 'Settings'
+  }
+];
+
+export const navItems: NavItem[] =
+  userDetails.userType === 'StationManager'
+    ? stationManagerRoutes
+    : userDetails.userType === 'Admin'
+      ? adminRoutes
+      : [
+          {
+            title: 'Dashboard',
+            href: '/',
+            icon: 'dashboard',
+            label: 'Dashboard'
+          },
+          {
+            title: 'Settings',
+            href: '/settings',
+            icon: 'settings',
+            label: 'Settings'
+          }
+        ];
 
 export const users = [
   {

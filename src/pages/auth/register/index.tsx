@@ -33,14 +33,14 @@ export default function SignInPage() {
           Logo
         </div>
         <div className="relative z-20 mt-auto">
-          <blockquote className="space-y-2">
+          {/* <blockquote className="space-y-2">
             <p className="text-lg">
               &ldquo;This library has saved me countless hours of work and
               helped me deliver stunning designs to my clients faster than ever
               before.&rdquo;
             </p>
             <footer className="text-sm">Sofia Davis</footer>
-          </blockquote>
+          </blockquote> */}
         </div>
       </div>
       <div className="flex h-full items-center p-4 lg:p-8">
@@ -54,7 +54,7 @@ export default function SignInPage() {
             </p>
           </div>
           <UserAuthForm />
-          <p className="px-8 text-center text-sm text-muted-foreground">
+          {/* <p className="px-8 text-center text-sm text-muted-foreground">
             By clicking continue, you agree to our{' '}
             <Link
               to="/terms"
@@ -70,7 +70,7 @@ export default function SignInPage() {
               Privacy Policy
             </Link>
             .
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
