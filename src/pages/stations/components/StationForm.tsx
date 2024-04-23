@@ -137,7 +137,7 @@ const StationForm = ({
     <Modal isOpen={isOpen} onClose={onClose} title={title}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-4">
-          <div className=" grid grid-cols-2 gap-4">
+          <div className=" grid grid-cols-3 gap-4">
             <FormField
               name="title"
               render={({ field }) => (
