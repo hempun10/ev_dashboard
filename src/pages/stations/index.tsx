@@ -10,7 +10,7 @@ import { useModal } from '@/hooks/useModal';
 import StationForm from './components/StationForm';
 import { returnTrueOrFalse } from '@/lib/utils';
 
-const Chargers = () => {
+const Stations = () => {
   const [modelOpen, setModelOpen] = useState(false);
   const [stations, setStations] = useState<Station[]>([]);
   const [formmatedStationsData, setFormmatedStationsData] = useState<
@@ -73,4 +73,4 @@ const Chargers = () => {
   );
 };
 
-export default Chargers;
+export default Stations;
