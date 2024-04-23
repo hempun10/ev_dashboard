@@ -50,17 +50,23 @@ console.log(userDetails.userType);
 export const navItems: NavItem[] =
   userDetails.userType === 'StationManager'
     ? [
-        {
-          title: 'Dashboard',
-          href: '/',
-          icon: 'dashboard',
-          label: 'Dashboard'
-        },
+        // {
+        //   title: 'Dashboard',
+        //   href: '/',
+        //   icon: 'dashboard',
+        //   label: 'Dashboard'
+        // },
         {
           title: 'Chargers',
-          href: '/chargers',
+          href: '/',
           icon: 'battery',
           label: 'Chargers'
+        },
+        {
+          title: 'Stations',
+          href: '/stations',
+          icon: 'user',
+          label: 'Stations'
         },
         {
           title: 'Settings',
@@ -71,17 +77,18 @@ export const navItems: NavItem[] =
       ]
     : userDetails.userType === 'Admin'
       ? [
+          // {
+          //   title: 'Dashboard',
+          //   href: '/',
+          //   icon: 'dashboard',
+          //   label: 'Dashboard'
+          // },
+
           {
-            title: 'Dashboard',
+            title: 'Station Manager',
             href: '/',
-            icon: 'dashboard',
-            label: 'Dashboard'
-          },
-          {
-            title: 'Stations',
-            href: '/stations',
             icon: 'user',
-            label: 'Stations'
+            label: 'Station Manager'
           },
           {
             title: 'Settings',
@@ -91,12 +98,12 @@ export const navItems: NavItem[] =
           }
         ]
       : [
-          {
-            title: 'Dashboard',
-            href: '/',
-            icon: 'dashboard',
-            label: 'Dashboard'
-          },
+          // {
+          //   title: 'Dashboard',
+          //   href: '/',
+          //   icon: 'dashboard',
+          //   label: 'Dashboard'
+          // },
           {
             title: 'Settings',
             href: '/settings',
