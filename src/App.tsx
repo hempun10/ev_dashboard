@@ -4,9 +4,19 @@ import AppRouter from './routes';
 import { useToggleLogin } from './store/useToogleLogin';
 import SignInPage from './pages/auth/register';
 import LoginPage from './pages/auth/login';
+import { useUserDetails } from './store/useUserDetails';
+import React from 'react';
 
 export default function App() {
   const { login } = useToggleLogin();
+  const { setUserDetails } = useUserDetails();
+
+  React.useEffect(() => {
+    const userDetails = localStorage.getItem('ev_userdetails');
+    if (userDetails) {
+      setUserDetails(JSON.parse(userDetails));
+    }
+  }, [setUserDetails]);
 
   return (
     <AppProvider>

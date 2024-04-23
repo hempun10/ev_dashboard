@@ -3,6 +3,7 @@ import { usePathname } from '@/routes/hooks';
 import Heading from './heading';
 import UserNav from './user-nav';
 import { ModeToggle } from './theme-toggle';
+import { useUserDetails } from '@/store/useUserDetails';
 
 // Custom hook to find the matched path
 const useMatchedPath = (pathname: string) => {
@@ -15,12 +16,13 @@ const useMatchedPath = (pathname: string) => {
 };
 
 export default function Header() {
+  const { userDetails } = useUserDetails();
   const pathname = usePathname();
   const headingText = useMatchedPath(pathname);
 
   return (
     <div className="flex flex-1 items-center justify-between bg-secondary px-4">
-      <Heading title={headingText} />
+      <Heading title={userDetails.userType ?? 'User'} />
       <div className="ml-4 flex items-center md:ml-6">
         <UserNav />
         <ModeToggle />

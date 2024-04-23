@@ -7,6 +7,7 @@ import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import ThemeProvider from './theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 export const queryClient = new QueryClient();
 
@@ -41,7 +42,8 @@ export default function AppProvider({
         <BrowserRouter>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <QueryClientProvider client={queryClient}>
-              <ReactQueryDevtools />
+              {/* <ReactQueryDevtools /> */}
+              <Toaster />
               <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
                 {children}
               </ThemeProvider>

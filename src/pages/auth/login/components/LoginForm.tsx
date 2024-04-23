@@ -52,13 +52,16 @@ export default function LoginForm() {
           'ev_userdetails',
           JSON.stringify(res.data.userdetails)
         );
+
         toggleLogin(true);
         toast({
           title: 'Success',
           description: 'Logged in successfully',
           variant: 'default'
         });
+        window.location.reload();
         navigate('/');
+        window.location.reload();
       } else {
         toast({
           title: 'Error',
@@ -69,7 +72,7 @@ export default function LoginForm() {
     } catch (error) {
       toast({
         title: 'Error',
-        description: error.response?.data.message || 'An error occurred',
+        description: 'An error occurred',
         variant: 'destructive'
       });
     } finally {

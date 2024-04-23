@@ -7,7 +7,7 @@ const DashboardLayout = lazy(
   () => import('@/components/layout/dashboard-layout')
 );
 const DashboardPage = lazy(() => import('@/pages/dashboard'));
-const ChargersPage = lazy(() => import('@/pages/stations'));
+const ChargersPage = lazy(() => import('@/pages/charger/index'));
 const StationPage = lazy(() => import('@/pages/stations/index'));
 const SettingsPage = lazy(() => import('@/pages/settings'));
 

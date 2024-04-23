@@ -45,11 +45,51 @@ export const adminRoutes: NavItem[] = [
   }
 ];
 
+console.log(userDetails.userType);
+
 export const navItems: NavItem[] =
   userDetails.userType === 'StationManager'
-    ? stationManagerRoutes
+    ? [
+        {
+          title: 'Dashboard',
+          href: '/',
+          icon: 'dashboard',
+          label: 'Dashboard'
+        },
+        {
+          title: 'Chargers',
+          href: '/chargers',
+          icon: 'battery',
+          label: 'Chargers'
+        },
+        {
+          title: 'Settings',
+          href: '/settings',
+          icon: 'settings',
+          label: 'Settings'
+        }
+      ]
     : userDetails.userType === 'Admin'
-      ? adminRoutes
+      ? [
+          {
+            title: 'Dashboard',
+            href: '/',
+            icon: 'dashboard',
+            label: 'Dashboard'
+          },
+          {
+            title: 'Stations',
+            href: '/stations',
+            icon: 'user',
+            label: 'Stations'
+          },
+          {
+            title: 'Settings',
+            href: '/settings',
+            icon: 'settings',
+            label: 'Settings'
+          }
+        ]
       : [
           {
             title: 'Dashboard',
