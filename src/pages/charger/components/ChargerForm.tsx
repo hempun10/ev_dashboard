@@ -95,7 +95,7 @@ const ChargerForm = ({
       } else {
         const newData = {
           ...values,
-          id: userDetails.UserID
+          id: 1
         };
         const res = await axios.post(baseUrl + '/chagers', newData, {
           headers: {

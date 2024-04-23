@@ -24,10 +24,6 @@ export const ChargerColumn: ColumnDef<ChargerColumn>[] = [
     header: 'Status'
   },
   {
-    accessorKey: 'openingtime',
-    header: 'Opening Time'
-  },
-  {
     accessorKey: 'ChagerStatus',
     header: 'Charger Status'
   },
