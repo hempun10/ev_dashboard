@@ -38,7 +38,7 @@ const formSchema = z.object({
   isAvailable: z.boolean().optional(),
   stationMessage: z.string().optional(),
   address: z.string().min(1, 'Address is required'),
-  latitude: z.number().multipleOf(0.01).min(1, 'Latitude is required'),
+  latitude: z.number(),
   longitude: z.number().multipleOf(0.01).min(1, 'Longitude is required'),
   code: z.string().min(1, 'Code is required')
   //   image: z.instanceof(File).optional()
