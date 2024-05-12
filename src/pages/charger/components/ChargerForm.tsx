@@ -18,13 +18,16 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/components/ui/use-toast';
+import { useStations } from '@/hooks/useStations';
 import { baseUrl } from '@/lib/utils';
 import { useUserDetails } from '@/store/useUserDetails';
+import { Station } from '@/types/station';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { log } from 'console';
 import { Loader } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -40,7 +43,8 @@ const formSchema = z.object({
   ChagerStatus: z.enum(['Booking', 'Available']),
   ChargerType: z.string().optional(),
   Price: z.string().optional(),
-  power: z.string().optional()
+  power: z.string().optional(),
+  stationId: z.string().optional()
 });
 
 export type ChargerFormValues = z.infer<typeof formSchema>;
@@ -54,6 +58,17 @@ const ChargerForm = ({
   const { userDetails } = useUserDetails();
   const queryClient = useQueryClient();
   const [isloading, setIsloading] = useState(false);
+  const [stations, setStations] = useState<Station[]>([]);
+  const { data, isLoading } = useStations();
+
+  useEffect(() => {
+    if (data) {
+      setStations(data.randomStation);
+    }
+  }, [data]);
+
+  console.log('stations', stations);
+
   const form = useForm<ChargerFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData
@@ -63,7 +78,8 @@ const ChargerForm = ({
           ChagerStatus: 'Booking',
           ChargerType: '',
           Price: '',
-          power: ''
+          power: '',
+          stationId: ''
         }
   });
 
@@ -214,6 +230,32 @@ const ChargerForm = ({
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="stationId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Station</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder=" Select Station" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {stations.map((station) => (
+                        <SelectItem value={station.id.toString()}>
+                          {station.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
